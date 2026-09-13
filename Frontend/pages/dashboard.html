@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexlas AI — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <div class="brand-mark">
+        <img src="../assets/images/download.png" alt="Nexlas AI Logo">
+    </div>
+
+    <div class="brand-text">
+        <div class="name">Nexlas AI</div>
+        <div class="tag">Smart Career Navigator</div>
+    </div>
+</div>
+  <div class="nav-group"><ul class="nav-list" id="navList">
+    <li><a class="nav-item" data-page="dashboard" href="dashboard.html"><span class="nav-icon">▦</span>Dashboard</a></li>
+    <li><a class="nav-item" data-page="roadmap" href="roadmap.html"><span class="nav-icon">⌘</span>Roadmap</a></li>
+    <li><a class="nav-item" data-page="index" href="../index.html"><span class="nav-icon">✦</span>NexlasGPT<span class="nav-badge">New</span></a></li>
+    <li><a class="nav-item" data-page="learning" href="learning.html"><span class="nav-icon">▤</span>Learning</a></li>
+    <li><a class="nav-item" data-page="mentors" href="mentors.html"><span class="nav-icon">♙</span>Mentors</a></li>
+    <li><a class="nav-item" data-page="projects" href="projects.html"><span class="nav-icon">▰</span>Projects</a></li>
+    <li><a class="nav-item" data-page="portfolio" href="portfolio.html"><span class="nav-icon">▣</span>Portfolio</a></li>
+    <li><span class="nav-item locked"><span class="nav-icon">◉</span>Opportunities<span class="nav-badge-soon">Soon</span></span></li>
+    <li><span class="nav-item locked"><span class="nav-icon">▥</span>Analytics<span class="nav-badge-soon">Soon</span></span></li>
+    <li><span class="nav-item locked"><span class="nav-icon">✪</span>Certificates<span class="nav-badge-soon">Soon</span></span></li>
+    <li><span class="nav-item locked"><span class="nav-icon">⚙</span>Settings<span class="nav-badge-soon">Soon</span></span></li>
+  </ul></div>
+  <div class="nav-spacer"></div>
+  <button class="btn-outline" id="logoutBtn" style="display:none;margin-top:10px;" onclick="logout()">Log Out</button>
+</aside>
+<main class="main">
+<div class="topbar"><div style="display:flex;align-items:flex-start;"><button class="mobile-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button><div><h1><span class="spark">✦</span> <span id="pageTitle">Dashboard</span></h1><p id="pageSubtitle">Your career journey at a glance — progress, matches and quick actions.</p></div></div><div class="top-profiles"><div class="chip-profile"><div class="av bot">✦</div><div class="txt"><b>NexlasGPT</b><span>Your AI Career Companion</span></div></div><div class="chip-profile" id="userChip" style="display:none;"><div class="av user">?</div><div class="txt"><b>Guest</b><span>Not signed in</span></div></div></div></div>
+<div class="view page-view" id="view-dashboard">
+<div class="results-grid" style="margin-bottom:18px;">
+<div class="card">
+<h3><span class="tagnum">1</span>Career Readiness</h3>
+<div class="gauge-wrap">
+<div class="gauge">
+<svg height="88" viewbox="0 0 88 88" width="88">
+<defs><lineargradient id="gradRing" x1="0%" x2="100%" y1="0%" y2="100%"><stop offset="0%" stop-color="#9b7bff"></stop><stop offset="100%" stop-color="#4f6df5"></stop></lineargradient></defs>
+<circle cx="44" cy="44" fill="none" r="36" stroke="var(--border-soft)" stroke-width="9"></circle>
+<circle cx="44" cy="44" fill="none" id="dashGaugeRing" r="36" stroke="url(#gradRing)" stroke-dasharray="226" stroke-dashoffset="226" stroke-linecap="round" stroke-width="9" style="transition:stroke-dashoffset 1s ease;"></circle>
+</svg>
+<div class="val"><b id="dashGaugeVal">0</b><span>READY</span></div>
+</div>
+<div class="gauge-msg" id="dashGaugeMsg">Complete your career diagnosis to see your score.</div>
+</div>
+<button class="btn-card" onclick="window.location.href='../index.html'">Go to NexlasGPT →</button>
+</div>
+<div class="card">
+<h3><span class="tagnum">2</span>Your Top Match</h3>
+<div id="dashMatchBox" style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;">
+<div style="font-size:28px;">🎯</div>
+<div style="font-size:13px;color:var(--text-dim);">No diagnosis yet — start onboarding to discover your best-fit career.</div>
+</div>
+<button class="btn-card" onclick="window.location.href='../index.html'">Start Diagnosis →</button>
+</div>
+<div class="card">
+<h3><span class="tagnum">3</span>Quick Stats</h3>
+<div class="mini-check"><span class="ok" id="statRoadmap">0</span>Roadmap steps completed</div>
+<div class="mini-check"><span class="ok" id="statLearning">0</span>Courses completed</div>
+</div>
+</div>
+<div class="card">
+<h3><span class="tagnum">4</span>Quick Actions</h3>
+<div class="option-grid" style="margin-bottom:0;">
+<div class="opt-card" onclick="window.location.href='roadmap.html'" style="cursor:pointer;"><span class="ic">🗺️</span><span class="t">View Roadmap</span><span class="d">Track your milestones</span></div>
+<div class="opt-card" onclick="window.location.href='learning.html'" style="cursor:pointer;"><span class="ic">📚</span><span class="t">Keep Learning</span><span class="d">Browse recommended courses</span></div>
+<div class="opt-card" onclick="window.location.href='mentors.html'" style="cursor:pointer;"><span class="ic">🧑‍🏫</span><span class="t">Find a Mentor</span><span class="d">Book a 1:1 session</span></div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<div class="toast" id="toast"></div><script src="../js/api.js"></script>
+<script src="../js/shared.js"></script>
+<script src="../js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexlas AI — Projects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/projects.css">
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <div class="brand-mark">
+        <img src="../assets/images/download.png" alt="Nexlas AI Logo">
+    </div>
+
+    <div class="brand-text">
+        <div class="name">Nexlas AI</div>
+        <div class="tag">Smart Career Navigator</div>
+    </div>
+</div>
+  <div class="nav-group"><ul class="nav-list" id="navList">
+    <li><a class="nav-item" data-page="dashboard" href="dashboard.html"><span class="nav-icon">▦</span>Dashboard</a></li>
+    <li><a class="nav-item" data-page="roadmap" href="roadmap.html"><span class="nav-icon">⌘</span>Roadmap</a></li>
+    <li><a class="nav-item" data-page="index" href="../index.html"><span class="nav-icon">✦</span>NexlasGPT<span class="nav-badge">New</span></a></li>
+    <li><a class="nav-item" data-page="learning" href="learning.html"><span class="nav-icon">▤</span>Learning</a></li>
+    <li><a class="nav-item" data-page="mentors" href="mentors.html"><span class="nav-icon">♙</span>Mentors</a></li>
+    <li><a class="nav-item" data-page="projects" href="projects.html"><span class="nav-icon">▰</span>Projects</a></li>
+    <li><a class="nav-item" data-page="portfolio" href="portfolio.html"><span class="nav-icon">▣</span>Portfolio</a></li>
+    <li><span class="nav-item locked"><span class="nav-icon">◉</span>Opportunities<span class="nav-badge-soon">Soon</span></span></li>
+    <li><span class="nav-item locked"><span class="nav-icon">▥</span>Analytics<span class="nav-badge-soon">Soon</span></span></li>
+    <li><span class="nav-item locked"><span class="nav-icon">✪</span>Certificates<span class="nav-badge-soon">Soon</span></span></li>
+    <li><span class="nav-item locked"><span class="nav-icon">⚙</span>Settings<span class="nav-badge-soon">Soon</span></span></li>
+  </ul></div>
+  <div class="nav-spacer"></div>
+  <button class="btn-outline" id="logoutBtn" style="display:none;margin-top:10px;" onclick="logout()">Log Out</button>
+</aside>
+<main class="main">
+<div class="topbar"><div style="display:flex;align-items:flex-start;"><button class="mobile-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button><div><h1><span class="spark">✦</span> <span id="pageTitle">Projects</span></h1><p id="pageSubtitle">Build real, portfolio-worthy proof of your skills.</p></div></div><div class="top-profiles"><div class="chip-profile"><div class="av bot">✦</div><div class="txt"><b>NexlasGPT</b><span>Your AI Career Companion</span></div></div><div class="chip-profile" id="userChip" style="display:none;"><div class="av user">?</div><div class="txt"><b>Guest</b><span>Not signed in</span></div></div></div></div>
+<div class="view page-view" id="view-projects">
+<div class="card" style="margin-bottom:18px;">
+<h3><span class="tagnum">📂</span>Filter Ideas</h3>
+<div class="chip-row" id="projectFilters" style="margin:0;"></div>
+</div>
+<div class="results-grid" id="projectGrid" style="margin-bottom:18px;"></div>
+<div class="card">
+<h3><span class="tagnum">✅</span>My Tracked Projects</h3>
+<div id="myProjects"><div style="font-size:12.5px;color:var(--text-faint);">Add a project idea above to start tracking it.</div></div>
+</div>
+</div>
+</main>
+</div>
+<div class="toast" id="toast"></div><script src="../js/api.js"></script>
+<script src="../js/shared.js"></script>
+<script src="../js/projects.js"></script>
+</body>
+</html>

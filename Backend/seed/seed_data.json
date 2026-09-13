@@ -1,0 +1,87 @@
+{
+  "careers": [
+    {
+      "title": "Data Analyst",
+      "description": "Analyzes data to help organizations make better decisions.",
+      "required_skills": [
+        {"skill": "SQL", "weight": 0.9},
+        {"skill": "Excel", "weight": 0.7},
+        {"skill": "Python", "weight": 0.6},
+        {"skill": "Data Visualization", "weight": 0.8},
+        {"skill": "Statistics", "weight": 0.7}
+      ]
+    },
+    {
+      "title": "Frontend Developer",
+      "description": "Builds user-facing web interfaces and experiences.",
+      "required_skills": [
+        {"skill": "JavaScript", "weight": 0.9},
+        {"skill": "React", "weight": 0.8},
+        {"skill": "CSS", "weight": 0.7},
+        {"skill": "HTML", "weight": 0.6},
+        {"skill": "Git", "weight": 0.5}
+      ]
+    },
+    {
+      "title": "UI/UX Designer",
+      "description": "Designs intuitive and visually engaging user experiences.",
+      "required_skills": [
+        {"skill": "Figma", "weight": 0.9},
+        {"skill": "Wireframing", "weight": 0.8},
+        {"skill": "User Research", "weight": 0.7},
+        {"skill": "Design Systems", "weight": 0.6}
+      ]
+    },
+    {
+      "title": "Digital Marketing Specialist",
+      "description": "Plans and runs campaigns to grow brand reach and conversions.",
+      "required_skills": [
+        {"skill": "SEO", "weight": 0.8},
+        {"skill": "Content Strategy", "weight": 0.7},
+        {"skill": "Google Analytics", "weight": 0.7},
+        {"skill": "Social Media Ads", "weight": 0.6},
+        {"skill": "Copywriting", "weight": 0.6}
+      ]
+    },
+    {
+      "title": "Data Scientist",
+      "description": "Builds models and extracts insights from complex datasets.",
+      "required_skills": [
+        {"skill": "Python", "weight": 0.9},
+        {"skill": "Machine Learning", "weight": 0.9},
+        {"skill": "Statistics", "weight": 0.8},
+        {"skill": "SQL", "weight": 0.6},
+        {"skill": "Data Visualization", "weight": 0.6}
+      ]
+    }
+  ],
+  "courses": [
+    {"title": "SQL for Beginners", "category": "Data", "skill_covered": "SQL", "difficulty": "beginner", "description": "Learn the fundamentals of querying relational databases."},
+    {"title": "Excel for Data Analysis", "category": "Data", "skill_covered": "Excel", "difficulty": "beginner", "description": "Use Excel functions, pivot tables, and charts for analysis."},
+    {"title": "Python Programming Basics", "category": "Programming", "skill_covered": "Python", "difficulty": "beginner", "description": "Get started with Python syntax, data types, and logic."},
+    {"title": "Data Visualization with Tableau", "category": "Data", "skill_covered": "Data Visualization", "difficulty": "intermediate", "description": "Turn raw data into clear, compelling visual dashboards."},
+    {"title": "Statistics Fundamentals", "category": "Data", "skill_covered": "Statistics", "difficulty": "beginner", "description": "Core statistical concepts for data-driven decision making."},
+    {"title": "JavaScript Essentials", "category": "Web Development", "skill_covered": "JavaScript", "difficulty": "beginner", "description": "Learn the core building blocks of modern JavaScript."},
+    {"title": "React Fundamentals", "category": "Web Development", "skill_covered": "React", "difficulty": "intermediate", "description": "Build interactive UIs with React components and hooks."},
+    {"title": "CSS & Responsive Design", "category": "Web Development", "skill_covered": "CSS", "difficulty": "beginner", "description": "Style modern, mobile-friendly web pages with CSS."},
+    {"title": "HTML Basics for Web", "category": "Web Development", "skill_covered": "HTML", "difficulty": "beginner", "description": "Structure web content the right way with semantic HTML."},
+    {"title": "Git & Version Control", "category": "Web Development", "skill_covered": "Git", "difficulty": "beginner", "description": "Track changes and collaborate on code using Git."},
+    {"title": "Figma for UI Design", "category": "Design", "skill_covered": "Figma", "difficulty": "beginner", "description": "Design interfaces and prototypes using Figma."},
+    {"title": "Wireframing & Prototyping", "category": "Design", "skill_covered": "Wireframing", "difficulty": "beginner", "description": "Sketch and prototype user flows before building."},
+    {"title": "User Research Methods", "category": "Design", "skill_covered": "User Research", "difficulty": "intermediate", "description": "Learn to gather and apply real user insights."},
+    {"title": "Design Systems 101", "category": "Design", "skill_covered": "Design Systems", "difficulty": "intermediate", "description": "Build and maintain reusable, consistent design components."},
+    {"title": "SEO Fundamentals", "category": "Marketing", "skill_covered": "SEO", "difficulty": "beginner", "description": "Improve search visibility with on-page and technical SEO."},
+    {"title": "Content Strategy for Marketers", "category": "Marketing", "skill_covered": "Content Strategy", "difficulty": "intermediate", "description": "Plan content that supports business and audience goals."},
+    {"title": "Google Analytics Mastery", "category": "Marketing", "skill_covered": "Google Analytics", "difficulty": "intermediate", "description": "Track and interpret website and campaign performance."},
+    {"title": "Social Media Advertising", "category": "Marketing", "skill_covered": "Social Media Ads", "difficulty": "beginner", "description": "Run effective paid campaigns across social platforms."},
+    {"title": "Copywriting That Converts", "category": "Marketing", "skill_covered": "Copywriting", "difficulty": "beginner", "description": "Write persuasive copy for ads, pages, and emails."},
+    {"title": "Machine Learning Basics", "category": "Data", "skill_covered": "Machine Learning", "difficulty": "intermediate", "description": "Understand core ML concepts and build your first models."}
+  ],
+  "mentors": [
+    {"name": "Ayesha Khan", "specialization": "Data Analyst", "bio": "5 years experience in business intelligence and analytics.", "email": "ayesha.khan@nexlas.ai"},
+    {"name": "Bilal Ahmed", "specialization": "Frontend Developer", "bio": "Frontend engineer specializing in React and design systems.", "email": "bilal.ahmed@nexlas.ai"},
+    {"name": "Sana Malik", "specialization": "UI/UX Designer", "bio": "Product designer with a focus on research-driven UX.", "email": "sana.malik@nexlas.ai"},
+    {"name": "Hassan Raza", "specialization": "Digital Marketing Specialist", "bio": "Growth marketer who has run SEO and paid campaigns for startups.", "email": "hassan.raza@nexlas.ai"},
+    {"name": "Fatima Sheikh", "specialization": "Data Scientist", "bio": "ML engineer with experience building predictive models in production.", "email": "fatima.sheikh@nexlas.ai"}
+  ]
+}

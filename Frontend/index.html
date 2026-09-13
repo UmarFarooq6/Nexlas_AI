@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexlas AI — AI Onboarding & Career Diagnosis</title>    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+
+<div class="brand">
+    <div class="brand-mark">
+        <img src="assets/images/download.png" alt="Nexlas AI Logo">
+    </div>
+
+    <div class="brand-text">
+        <div class="name">Nexlas AI</div>
+        <div class="tag">Smart Career Navigator</div>
+    </div>
+</div>
+
+
+  <div class="nav-group"><ul class="nav-list" id="navList">
+    <li><a class="nav-item" data-page="dashboard" href="pages/dashboard.html"><span class="nav-icon">▦</span>Dashboard</a></li>
+    <li><a class="nav-item" data-page="roadmap" href="pages/roadmap.html"><span class="nav-icon">⌘</span>Roadmap</a></li>
+    <li><a class="nav-item" data-page="index" href="index.html"><span class="nav-icon">✦</span>NexlasGPT<span class="nav-badge">New</span></a></li>
+    <li><a class="nav-item" data-page="learning" href="pages/learning.html"><span class="nav-icon">▤</span>Learning</a></li>
+    <li><a class="nav-item" data-page="mentors" href="pages/mentors.html"><span class="nav-icon">♙</span>Mentors</a></li>
+    <li><a class="nav-item" data-page="projects" href="pages/projects.html"><span class="nav-icon">▰</span>Projects</a></li>
+    <li><a class="nav-item" data-page="portfolio" href="pages/portfolio.html"><span class="nav-icon">▣</span>Portfolio</a></li>
+    <li><span class="nav-item locked"><span class="nav-icon">◉</span>Opportunities<span class="nav-badge-soon">Soon</span></span></li>
+    <li><span class="nav-item locked"><span class="nav-icon">▥</span>Analytics<span class="nav-badge-soon">Soon</span></span></li>
+    <li><span class="nav-item locked"><span class="nav-icon">✪</span>Certificates<span class="nav-badge-soon">Soon</span></span></li>
+    <li><span class="nav-item locked"><span class="nav-icon">⚙</span>Settings<span class="nav-badge-soon">Soon</span></span></li>
+  </ul></div>
+  <div class="nav-spacer"></div>
+  <button class="btn-outline" id="logoutBtn" style="display:none;margin-top:10px;" onclick="logout()">Log Out</button>
+</aside>
+<main class="main">
+<div class="topbar"><div style="display:flex;align-items:flex-start;"><button class="mobile-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button><div><h1><span class="spark">✦</span> <span id="pageTitle">AI Onboarding &amp; Career Diagnosis</span></h1><p id="pageSubtitle">A conversational onboarding experience that understands you and creates your personalized career path.</p></div></div><div class="top-profiles"><div class="chip-profile"><div class="av bot">✦</div><div class="txt"><b>NexlasGPT</b><span>Your AI Career Companion</span></div></div><div class="chip-profile" id="userChip" style="display:none;"><div class="av user">?</div><div class="txt"><b>Guest</b><span>Not signed in</span></div></div><a class="btn-signin" id="signInBtn" href="login.html">Sign In</a></div></div>
+<div class="view page-view" id="view-nexlasgpt">
+<!-- STEPPER -->
+<div class="stepper-wrap">
+<div class="stepper" id="stepper"></div>
+</div>
+<!-- WIZARD -->
+<div class="wizard-panel" id="wizardPanel">
+<!-- STEP 1: WELCOME -->
+<div class="step-view show" data-step="1">
+<div class="welcome-box">
+<div class="mascot">🤖</div>
+<h2>Your career journey starts with understanding you.</h2>
+<p>NexlasGPT will walk you through a few quick questions about your background, skills, interests and goals — then build your personalized career path.</p>
+<button class="btn-primary" onclick="goStep(2)">Start My Career Diagnosis</button>
+<button class="link-ghost" onclick="skipToGoal()">I already have a career goal →</button>
+</div>
+</div>
+<!-- STEP 2: ABOUT YOU -->
+<div class="step-view" data-step="2">
+<div class="step-tag">Step 2 of 9</div>
+<div class="step-title">Tell Us About Yourself</div>
+<div class="bot-msg">
+<div class="av">✦</div>
+<div>
+<span class="name">NexlasGPT</span>
+<div class="bubble">Hi 👋 Before recommending a career, I want to understand <b>you</b>. Tell me a bit about your story — what have you studied, worked on, or dreamed of doing?</div>
+</div>
+</div>
+<textarea class="field" id="storyInput" oninput="onStoryInput()" placeholder="e.g. I just finished my BBA and I've been exploring marketing, but I'm also curious about data and analytics..."></textarea>
+<div class="field-hint"><span id="storyHint">Write at least a couple of sentences.</span><span id="storyCount">0 chars</span></div>
+<div class="wizard-nav">
+<button class="btn-back" onclick="goStep(1)">← Back</button>
+<button class="btn-primary" disabled="" id="btnStep2" onclick="goStep(3)">Continue →</button>
+</div>
+</div>
+<!-- STEP 3: EDUCATION -->
+<div class="step-view" data-step="3">
+<div class="step-tag">Step 3 of 9</div>
+<div class="step-title">Education</div>
+<div class="bot-msg">
+<div class="av">✦</div>
+<div><span class="name">NexlasGPT</span><div class="bubble">What's your highest educational qualification?</div></div>
+</div>
+<div class="option-grid" id="eduGrid">
+<div class="opt-card" data-val="High school"><span class="check">✓</span><span class="ic">📘</span><span class="t">High school</span><span class="d">Currently in / completed high school</span></div>
+<div class="opt-card" data-val="FSc / Intermediate"><span class="check">✓</span><span class="ic">🏫</span><span class="t">FSc / Intermediate</span><span class="d">FA, FSc, ICS or I.Com — pre-university</span></div>
+<div class="opt-card" data-val="Diploma"><span class="check">✓</span><span class="ic">📜</span><span class="t">Diploma</span><span class="d">e.g. DAE or another technical diploma</span></div>
+<div class="opt-card" data-val="Bachelor's in progress"><span class="check">✓</span><span class="ic">📖</span><span class="t">Bachelor's in progress</span><span class="d">Currently pursuing an undergraduate degree</span></div>
+<div class="opt-card" data-val="Bachelor's completed"><span class="check">✓</span><span class="ic">🎓</span><span class="t">Bachelor's completed</span><span class="d">Finished an undergraduate degree</span></div>
+<div class="opt-card" data-val="Master's or higher"><span class="check">✓</span><span class="ic">🏅</span><span class="t">Master's or higher</span><span class="d">Postgraduate degree</span></div>
+</div>
+<div id="eduFollowup" style="display:none;">
+<div class="bot-msg">
+<div class="av">✦</div>
+<div><span class="name">NexlasGPT</span><div class="bubble">Great! What did you study? <span style="color:var(--text-faint)">(e.g. BBA — Bachelor of Business Administration)</span></div></div>
+</div>
+<input class="field" id="fieldInput" placeholder="e.g. BBA (Bachelor of Business Administration)"/>
+<div class="chip-row" id="statusChips">
+<div class="chip" data-val="Student">🎒 Student</div>
+<div class="chip" data-val="Working">💼 Working</div>
+<div class="chip" data-val="Not working">🌱 Not working</div>
+</div>
+</div>
+<div class="wizard-nav">
+<button class="btn-back" onclick="goStep(2)">← Back</button>
+<button class="btn-primary" disabled="" id="btnStep3" onclick="goStep(4)">Continue →</button>
+</div>
+</div>
+<!-- STEP 4: EXPERIENCE -->
+<div class="step-view" data-step="4">
+<div class="step-tag">Step 4 of 9</div>
+<div class="step-title">Experience</div>
+<div class="bot-msg">
+<div class="av">✦</div>
+<div><span class="name">NexlasGPT</span><div class="bubble">What have you worked on, volunteered on, or completed? Select everything that applies.</div></div>
+</div>
+<div class="option-grid" id="expGrid">
+<div class="opt-card" data-val="Work Experience"><span class="check">✓</span><span class="ic">💼</span><span class="t">Work Experience</span><span class="d">Paid job / part-time role</span></div>
+<div class="opt-card" data-val="Freelancing"><span class="check">✓</span><span class="ic">🧩</span><span class="t">Freelancing</span><span class="d">Client or gig-based work</span></div>
+<div class="opt-card" data-val="Projects"><span class="check">✓</span><span class="ic">📂</span><span class="t">Projects</span><span class="d">Personal or academic projects</span></div>
+<div class="opt-card" data-val="Internship"><span class="check">✓</span><span class="ic">⏱️</span><span class="t">Internship</span><span class="d">Training or internship program</span></div>
+<div class="opt-card" data-val="None yet"><span class="check">✓</span><span class="ic">🌱</span><span class="t">None yet</span><span class="d">Just getting started</span></div>
+</div>
+<div class="wizard-nav">
+<button class="btn-back" onclick="goStep(3)">← Back</button>
+<button class="btn-primary" disabled="" id="btnStep4" onclick="goStep(5)">Continue →</button>
+</div>
+</div>
+<!-- STEP 5: SKILLS DISCOVERY -->
+<div class="step-view" data-step="5">
+<div class="step-tag">Step 5 of 9</div>
+<div class="step-title">Skills Discovery</div>
+<div class="bot-msg">
+<div class="av">✦</div>
+<div><span class="name">NexlasGPT</span><div class="bubble">Can you tell me what tools / skills you've worked with? Type below and hit "Add", or tap the suggested chips.</div></div>
+</div>
+<div class="skill-input-row">
+<input class="field" id="skillInput" onkeydown="if(event.key==='Enter'){event.preventDefault();addSkillFromInput();}" placeholder="e.g. Excel, Python, Figma..."/>
+<button class="btn-add" onclick="addSkillFromInput()">Add</button>
+</div>
+<div class="bot-msg" style="margin-top:16px;">
+<div class="av">✦</div>
+<div><span class="name">NexlasGPT</span><div class="bubble">I've detected these popular skills — tap to confirm the ones that apply to you:</div></div>
+</div>
+<div class="chip-row" id="suggestSkillChips"></div>
+<div class="bot-msg" style="margin-top:14px;">
+<div class="av">✦</div>
+<div><span class="name">NexlasGPT</span><div class="bubble">Your selected skills so far — did I understand correctly?</div></div>
+</div>
+<div class="chip-row" id="selectedSkillChips"></div>
+<div class="confirm-row">
+<button class="btn-yes" id="skillYes" onclick="setSkillConfirm(true)">✓ Yes, correct</button>
+<button class="btn-no" id="skillNo" onclick="setSkillConfirm(false)">✎ Edit skills</button>
+</div>
+<div class="wizard-nav">
+<button class="btn-back" onclick="goStep(4)">← Back</button>
+<button class="btn-primary" disabled="" id="btnStep5" onclick="goStep(6)">Continue →</button>
+</div>
+</div>
+<!-- STEP 6: INTERESTS -->
+<div class="step-view" data-step="6">
+<div class="step-tag">Step 6 of 9</div>
+<div class="step-title">Interests</div>
+<div class="bot-msg">
+<div class="av">✦</div>
+<div><span class="name">NexlasGPT</span><div class="bubble">What kind of work makes you interested? Pick up to 3.</div></div>
+</div>
+<div class="option-grid" id="interestGrid">
+<div class="opt-card" data-val="Data"><span class="check">✓</span><span class="ic">📊</span><span class="t">Data</span><span class="d">Numbers, patterns, insights</span></div>
+<div class="opt-card" data-val="Web Development"><span class="check">✓</span><span class="ic">💻</span><span class="t">Web Development</span><span class="d">Building, coding, systems</span></div>
+<div class="opt-card" data-val="Design"><span class="check">✓</span><span class="ic">🎨</span><span class="t">Design</span><span class="d">Visual, UX, creativity</span></div>
+<div class="opt-card" data-val="Marketing"><span class="check">✓</span><span class="ic">📣</span><span class="t">Marketing</span><span class="d">Growth, campaigns, branding</span></div>
+<div class="opt-card" data-val="Machine Learning"><span class="check">✓</span><span class="ic">🤖</span><span class="t">Machine Learning</span><span class="d">AI, models, predictions</span></div>
+</div>
+<div class="wizard-nav">
+<button class="btn-back" onclick="goStep(5)">← Back</button>
+<button class="btn-primary" disabled="" id="btnStep6" onclick="goStep(7)">Continue →</button>
+</div>
+</div>
+<!-- STEP 7: CAREER GOAL -->
+<div class="step-view" data-step="7">
+<div class="step-tag">Step 7 of 9</div>
+<div class="step-title">Career Goal</div>
+<div class="bot-msg">
+<div class="av">✦</div>
+<div><span class="name">NexlasGPT</span><div class="bubble">Imagine it's 5 years from now — what would you like to be doing?</div></div>
+</div>
+<textarea class="field" id="goalInput" oninput="onGoalInput()" placeholder="e.g. I want to become a Data Analyst at a good company and lead data-driven decisions in the future."></textarea>
+<div class="wizard-nav">
+<button class="btn-back" onclick="goStep(6)">← Back</button>
+<button class="btn-primary" disabled="" id="btnStep7" onclick="goStep(8)">Continue →</button>
+</div>
+</div>
+<!-- STEP 8: TIME AVAILABLE -->
+<div class="step-view" data-step="8">
+<div class="step-tag">Step 8 of 9</div>
+<div class="step-title">Time Available</div>
+<div class="bot-msg">
+<div class="av">✦</div>
+<div><span class="name">NexlasGPT</span><div class="bubble">How much time can you commit weekly to learning?</div></div>
+</div>
+<div class="chip-row" id="timeChips">
+<div class="chip" data-val="Less than 5hrs">⏱ Less than 5hrs</div>
+<div class="chip" data-val="5-10hrs">🕐 5-10hrs</div>
+<div class="chip" data-val="10+hrs">🕒 10+hrs</div>
+</div>
+<div class="wizard-nav">
+<button class="btn-back" onclick="goStep(7)">← Back</button>
+<button class="btn-primary" disabled="" id="btnStep8" onclick="goStep(9)">Continue →</button>
+</div>
+</div>
+<!-- STEP 9: LEARNING STYLE -->
+<div class="step-view" data-step="9">
+<div class="step-tag">Step 9 of 9</div>
+<div class="step-title">Learning Style</div>
+<div class="bot-msg">
+<div class="av">✦</div>
+<div><span class="name">NexlasGPT</span><div class="bubble">How do you prefer to learn?</div></div>
+</div>
+<div class="chip-row" id="learningStyleChips">
+<div class="chip" data-val="Video">🎬 Video</div>
+<div class="chip" data-val="Hands-on">🛠 Hands-on</div>
+<div class="chip" data-val="Reading">📖 Reading</div>
+</div>
+<div class="wizard-nav">
+<button class="btn-back" onclick="goStep(8)">← Back</button>
+<button class="btn-primary" disabled="" id="btnStep9" onclick="runAnalysis()">Analyze My Career Path ✦</button>
+</div>
+</div>
+<!-- ANALYSIS LOADING -->
+<div class="step-view analysis-panel" data-step="10" id="analysisPanel">
+<div class="step-tag">Step 10 of 15</div>
+<div class="step-title">AI Analysis in Progress</div>
+<p style="color:var(--text-dim);font-size:13px;">NexlasGPT is connecting the dots between your background, skills, interests and goals...</p>
+<div class="analysis-list" id="analysisList"></div>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<div class="wizard-nav">
+<button class="btn-back" onclick="goStep(9)">← Back</button>
+</div>
+</div>
+</div>
+<!-- ============ RESULTS ============ -->
+<div class="results" id="results">
+<div class="results-head">
+<div>
+<h2>Your Career Diagnosis Is Ready</h2>
+<p>Based on everything you shared, here's what NexlasGPT found.</p>
+</div>
+<button class="btn-restart" onclick="restartAll()">↺ Restart Diagnosis</button>
+</div>
+<div class="results-grid">
+<!-- Card: analysis recap -->
+<div class="card">
+<h3><span class="tagnum">9</span>What You Already Have vs. What You Need</h3>
+<div class="hv-cols">
+<div class="hv-col have">
+<h4>You Have</h4>
+<div id="haveList"></div>
+</div>
+<div class="hv-col need">
+<h4>You Need</h4>
+<div id="needList"></div>
+</div>
+</div>
+</div>
+<!-- Card: career diagnosis -->
+<div class="card">
+<h3><span class="tagnum">10</span>Your Top Career Match</h3>
+<div class="match-row">
+<div class="ring">
+<svg viewbox="0 0 74 74">
+<defs><lineargradient id="gradRing" x1="0%" x2="100%" y1="0%" y2="100%"><stop offset="0%" stop-color="#9b7bff"></stop><stop offset="100%" stop-color="#4f6df5"></stop></lineargradient></defs>
+<circle class="bgc" cx="37" cy="37" r="30"></circle>
+<circle class="fgc" cx="37" cy="37" id="matchRing" r="30" stroke-dasharray="188.5" stroke-dashoffset="188.5"></circle>
+</svg>
+<div class="val" id="matchPct">0%</div>
+</div>
+<div>
+<div class="match-role" id="matchRole">—</div>
+<div class="match-tag">✓ Strong Alignment</div>
+</div>
+</div>
+<div style="font-size:11px;color:var(--text-faint);font-weight:800;text-transform:uppercase;letter-spacing:.3px;margin-bottom:6px;">Why it's a great match</div>
+<ul class="reason-list" id="reasonList"></ul>
+<button class="btn-card" onclick="toast('Full career report would open here.')">See Full Career Details</button>
+</div>
+<!-- Card: readiness -->
+<div class="card">
+<h3><span class="tagnum">11</span>Career Readiness</h3>
+<div class="gauge-wrap">
+<div class="gauge">
+<svg height="88" viewbox="0 0 88 88" width="88">
+<circle cx="44" cy="44" fill="none" r="36" stroke="var(--border-soft)" stroke-width="9"></circle>
+<circle cx="44" cy="44" fill="none" id="gaugeRing" r="36" stroke="url(#gradRing)" stroke-dasharray="226" stroke-dashoffset="226" stroke-linecap="round" stroke-width="9" style="transition:stroke-dashoffset 1.2s ease;"></circle>
+</svg>
+<div class="val"><b id="gaugeVal">0</b><span>READINESS</span></div>
+</div>
+<div class="gauge-msg" id="gaugeMsg">You're on the right track — keep learning!</div>
+</div>
+<div id="readinessBars"></div>
+</div>
+<!-- Card: analysis complete checklist -->
+<div class="card">
+<h3><span class="tagnum">8</span>AI Analysis Complete</h3>
+<div id="analysisRecap"></div>
+</div>
+<!-- Card: personalized path -->
+<div class="card">
+<h3><span class="tagnum">12</span>Your Personalized Path</h3>
+<div class="timeline" id="timeline"></div>
+</div>
+<!-- Card: next step -->
+<div class="card next-card">
+<h3 style="justify-content:center;"><span class="tagnum">13</span>Next Step</h3>
+<div class="next-rocket">🚀</div>
+<h3 style="border:none;">Your personalized journey is ready!</h3>
+<p>Take the next step and start building your future with confidence.</p>
+<div class="next-btns">
+<button class="btn-solid" onclick="window.location.href='pages/dashboard.html'">Go to Dashboard</button>
+<button class="btn-line" onclick="window.location.href='pages/mentors.html'">Talk to a Mentor</button>
+<button class="btn-line" onclick="window.location.href='pages/learning.html'">Explore Courses</button>
+</div>
+</div>
+</div>
+<!-- Feature strip -->
+<div class="feature-strip">
+<div class="feat"><div class="ic">🎯</div><h4>Personalized For You</h4><p>Every recommendation is based on your unique profile and goals.</p></div>
+<div class="feat"><div class="ic">📈</div><h4>Data-Driven Intelligence</h4><p>We analyze thousands of data points to find the best career path.</p></div>
+<div class="feat"><div class="ic">🏆</div><h4>Outcome-Focused</h4><p>We focus on real skills, real projects and real opportunities.</p></div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<div class="toast" id="toast"></div><script src="js/api.js"></script>
+<script src="js/shared.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

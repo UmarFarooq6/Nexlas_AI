@@ -1,0 +1,16 @@
+/* ============================================================
+   INDEX PAGE (onboarding wizard)
+   Shared chrome lives in base.css — only wizard-specific rules
+   are defined below.
+============================================================ */
+@import url("base.css");
+
+/* ---------- Topbar Sign In button ---------- */
+.btn-signin{
+  display:inline-flex;align-items:center;justify-content:center;align-self:center;
+  background:var(--accent-grad);color:#fff;font-size:13px;font-weight:700;
+  padding:9px 24px;border-radius:30px;text-decoration:none;white-space:nowrap;
+  box-shadow:0 10px 24px -8px rgba(124,92,252,.55);
+  transition:transform .15s ease,box-shadow .15s ease,filter .15s ease;
+}
+.btn-signin:hover{transform:translateY(-1px);box-shadow:0 14px 28px -8px rgba(124,92,252,.65);filter:brightness(1.06);}

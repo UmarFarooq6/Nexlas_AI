@@ -1,0 +1,28 @@
+/* ============================================================
+   MENTORS PAGE
+   Shared chrome lives in base.css — only mentor-specific rules
+   are defined below.
+============================================================ */
+@import url("base.css");
+
+/* ---------- Mentor cards ---------- */
+.mentor-contact{display:flex;flex-direction:column;gap:6px;margin:14px 0 6px;}
+.mentor-contact .contact-row{font-size:12px;color:var(--text-dim);display:flex;align-items:center;gap:6px;}
+.mentor-contact .contact-row a{color:var(--text-dim);text-decoration:none;word-break:break-all;}
+.mentor-contact .contact-row a:hover{color:var(--accent,#7c5cff);text-decoration:underline;}
+
+/* Initials avatar — generated locally, no external avatar service needed */
+.mentor-avatar{
+  width:52px;height:52px;border-radius:50%;flex-shrink:0;
+  border:2px solid var(--border-soft);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:17px;color:#fff;letter-spacing:.5px;
+  background:var(--accent-grad);
+}
+
+/* ---------- Booked mentor — the whole card is highlighted so the
+   user's active session is impossible to miss ---------- */
+.tag-pills{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;}
+.tag-pill.booked-pill{background:var(--success-soft);border-color:var(--success);color:var(--success);}
+.list-card.booked{border-color:var(--success);box-shadow:0 0 0 1px var(--success),0 10px 30px rgba(52,211,153,.14);}
+.list-card.booked .mentor-avatar{border-color:var(--success);}

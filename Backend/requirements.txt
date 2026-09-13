@@ -1,0 +1,15 @@
+# Backend dependencies (pinned to the versions the app is tested with)
+fastapi==0.141.1
+uvicorn==0.46.0
+python-dotenv==1.2.2
+sqlalchemy==2.0.52
+psycopg2-binary==2.9.12
+pydantic==2.13.4
+email-validator==2.3.0
+passlib==1.7.4
+bcrypt==4.0.1
+google-genai==2.21.0
+
+# Dev-only (Streamlit test console) — not needed to run the backend:
+#   streamlit
+#   requests
